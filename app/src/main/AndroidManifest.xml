@@ -16,6 +16,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name=".receiver.ScreenStatusReceiver"
+            android:enabled="true"
+            android:exported="true" />
+
+        <service
+            android:name=".service.ScreenMonitorService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
+
+    <uses-permission android:name="android.permission.SET_WALLPAPER"></uses-permission>
 
 </manifest>
