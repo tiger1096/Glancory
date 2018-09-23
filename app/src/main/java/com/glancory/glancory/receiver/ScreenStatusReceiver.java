@@ -20,6 +20,10 @@ public class ScreenStatusReceiver extends BroadcastReceiver {
 
     Context mContext;
 
+    public ScreenStatusReceiver() {
+        super();
+    }
+
     public ScreenStatusReceiver(Context context) {
         mContext = context;
     }
