@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
         Intent i = registerReceiver(mScreenStatusReceiver, mIntentFilter);
         Log.e("ha","Intent.ACTION_SCREEN_ON");
+
+        sendBroadcast(new Intent("RestartSerivcesForSystemEventReceiver"));
     }
 
     @Override
