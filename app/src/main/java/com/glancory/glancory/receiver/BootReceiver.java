@@ -15,18 +15,9 @@ public class BootReceiver extends BroadcastReceiver {
         if(isBoot) {
             return ;
         }
-
-        for (int i = 0; i < 3; i ++) {
-            Log.e("BootReceiver", "BootReceiver receive msg");
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+        Log.e("BootReceiver", "BootReceiver receive msg");
 
         context.startService(new Intent(context, ScreenMonitorService.class));
-
         isBoot = true;
     }
 }

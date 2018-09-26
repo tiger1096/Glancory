@@ -8,6 +8,7 @@ import android.content.IntentFilter;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.RemoteController;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -25,40 +26,38 @@ public class ScreenStatusReceiver extends BroadcastReceiver {
     }
 
     public ScreenStatusReceiver(Context context) {
+        Log.e("ScreenStatusReceiver", "ScreenStatusReceiver construct");
         mContext = context;
     }
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        // TODO: This method is called when the BroadcastReceiver is receiving
-        // an Intent broadcast.
-
-        System.out.println("ScreenStatusReceiver receive " + intent.getAction());
-
         Log.e("ScreenStatusReceiver", "ScreenStatusReceiver receive " + intent.getAction());
 
         if(intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
-            SetLockWallPaper();
+            setLockWallPaper();
         }
-
-        //throw new UnsupportedOperationException("Not yet implemented");
     }
 
-    private void SetLockWallPaper() {
-        // TODO Auto-generated method stub
+    private void setLockWallPaper() {
+        Log.e("setLockWallPaper","setLockWallPaper start");
+
         try {
             WallpaperManager mWallManager = WallpaperManager.getInstance(mContext);
-            mWallManager.setBitmap(getImageFromAssetsFile("bg1.jpg"), null, false, WallpaperManager.FLAG_LOCK);
+            Bitmap bitmap = getImageFromAssetsFile("bg1.jpg");
+            if (bitmap == null) {
+                Log.e("setLockWallPaper","bitmap is null");
+            }
+
+            int ret = mWallManager.setBitmap(bitmap, null, true, WallpaperManager.FLAG_SYSTEM);
+            //int ret = mWallManager.setBitmap(bitmap, null, true, WallpaperManager.FLAG_LOCK);
+            Log.e("setLockWallPaper","setBitmap = " + ret);
         } catch (Exception e) {
-            // TODO Auto-generated catch block e.printStackTrace();
-
             Log.e("ScreenStatusReceiver", "ScreenStatusReceiver receive fail " + e.getMessage() + ", and name = " + e.getClass().getName());
-
         }
     }
 
-    private Bitmap getImageFromAssetsFile(String fileName)
-    {
+    private Bitmap getImageFromAssetsFile(String fileName) {
         Bitmap image = null;
         AssetManager am = mContext.getResources().getAssets();
         try
@@ -69,8 +68,10 @@ public class ScreenStatusReceiver extends BroadcastReceiver {
         }
         catch (IOException e)
         {
+            Log.e("setLockWallPaper","getImageFromAssetsFile fail = " + e.getMessage());
             e.printStackTrace();
         } catch (Exception e) {
+            Log.e("setLockWallPaper","getImageFromAssetsFile fail = " + e.getMessage());
             e.printStackTrace();
         }
 
