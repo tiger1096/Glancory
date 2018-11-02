@@ -8,9 +8,15 @@ import android.content.IntentFilter;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.PointF;
 import android.media.RemoteController;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.glancory.glancory.PictureTextUtil.TextUtil;
+import com.glancory.glancory.entity.InputPictureParam;
+import com.glancory.glancory.entity.InputTextParam;
+import com.glancory.glancory.entity.OutputPictureParam;
 
 import java.io.IOError;
 import java.io.IOException;
@@ -49,8 +55,23 @@ public class ScreenStatusReceiver extends BroadcastReceiver {
                 Log.e("setLockWallPaper","bitmap is null");
             }
 
-            int ret = mWallManager.setBitmap(bitmap, null, true, WallpaperManager.FLAG_SYSTEM);
-            //int ret = mWallManager.setBitmap(bitmap, null, true, WallpaperManager.FLAG_LOCK);
+            Log.e("setLockWallPaper","bitmap is null2");
+
+            InputPictureParam inputPictureParam = new InputPictureParam();
+            InputTextParam inputTextParam = new InputTextParam();
+            OutputPictureParam outputPictureParam = new OutputPictureParam();
+            inputPictureParam.setBitmap(bitmap);
+            inputPictureParam.setStartPoint(new PointF(0.05f, 0.9f));
+            inputTextParam.setFontSize(35.f);
+            String [] texts = new String[1];
+            texts[0] = "前进吧，多啦A梦！";
+            inputTextParam.setTexts(texts);
+
+            Bitmap tarBitmap = TextUtil.generateMeaningfulPicture(outputPictureParam, inputPictureParam, inputTextParam);
+
+//            int ret = mWallManager.setBitmap(tarBitmap, null, true, WallpaperManager.FLAG_SYSTEM);
+//            int ret = mWallManager.setBitmap(bitmap, null, true, WallpaperManager.FLAG_LOCK);
+            int ret = mWallManager.setBitmap(tarBitmap, null, true, WallpaperManager.FLAG_SYSTEM);
             Log.e("setLockWallPaper","setBitmap = " + ret);
         } catch (Exception e) {
             Log.e("ScreenStatusReceiver", "ScreenStatusReceiver receive fail " + e.getMessage() + ", and name = " + e.getClass().getName());

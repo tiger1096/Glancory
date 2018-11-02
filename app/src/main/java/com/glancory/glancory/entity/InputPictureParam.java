@@ -1,5 +1,6 @@
 package com.glancory.glancory.entity;
 
+import android.graphics.Bitmap;
 import android.graphics.PointF;
 
 /**
@@ -14,6 +15,8 @@ public class InputPictureParam {
     private float blankHeight;
     private int bakgroundColor;
 
+    private Bitmap bitmap;
+
     public InputPictureParam() {
 
     }
@@ -25,12 +28,36 @@ public class InputPictureParam {
                              float blankHeight,
                              int bakgroundColor) {
         setBakgroundColor(bakgroundColor);
-        setblankHeight(blankHeight);
-        setblankWidth(blankWidth);
+        setBlankHeight(blankHeight);
+        setBlankWidth(blankWidth);
         setHeight(height);
         setWidth(width);
         setStartPoint(startPoint);
         
+    }
+
+    public float getBlankWidth() {
+        return blankWidth;
+    }
+
+    public void setBlankWidth(float blankWidth) {
+        this.blankWidth = blankWidth;
+    }
+
+    public float getBlankHeight() {
+        return blankHeight;
+    }
+
+    public void setBlankHeight(float blankHeight) {
+        this.blankHeight = blankHeight;
+    }
+
+    public Bitmap getBitmap() {
+        return bitmap;
+    }
+
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
     }
 
     public void setWidth(int width) {
@@ -43,14 +70,6 @@ public class InputPictureParam {
 
     public void setStartPoint(PointF startPoint) {
         this.startPoint = startPoint;
-    }
-
-    public void setblankWidth(float blankWidth) {
-        this.blankWidth = blankWidth;
-    }
-
-    public void setblankHeight(float blankHeight) {
-        this.blankHeight = blankHeight;
     }
 
     public void setBakgroundColor(int bakgroundColor) {
@@ -67,14 +86,6 @@ public class InputPictureParam {
 
     public PointF getStartPoint() {
         return startPoint;
-    }
-
-    public float getblankWidth() {
-        return blankWidth;
-    }
-
-    public float getblankHeight() {
-        return blankHeight;
     }
 
     public int getBakgroundColor() {

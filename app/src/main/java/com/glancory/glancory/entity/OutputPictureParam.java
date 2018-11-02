@@ -4,15 +4,15 @@ package com.glancory.glancory.entity;
  * Created by zhangqi on 18/10/28.
  */
 
-public class OutoutPictureParam {
+public class OutputPictureParam {
     private int width;
     private int height;
 
-    public OutoutPictureParam() {
+    public OutputPictureParam() {
 
     }
 
-    public OutoutPictureParam(int width, int height) {
+    public OutputPictureParam(int width, int height) {
         setHeight(height);
         setWidth(width);
     }
