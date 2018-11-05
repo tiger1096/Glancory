@@ -15,7 +15,7 @@ public class BootReceiver extends BroadcastReceiver {
         if(isBoot) {
             return ;
         }
-        Log.e("BootReceiver", "BootReceiver receive msg");
+        Log.e("BootReceiver", "BootReceiver received msg");
 
         context.startService(new Intent(context, ScreenMonitorService.class));
         isBoot = true;
