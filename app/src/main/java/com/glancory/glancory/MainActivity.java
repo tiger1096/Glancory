@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             switch(msg.what) {
                 case RESPONSE_LOGIN_SUCCESS:
-                    Log.e("Login", "Login success");
+                    Log.e("Login", "Login success ＝ " + msg.obj);
                     break;
                 case RESPONSE_LOGIN_FAIL:
                     Log.e("Login", "Login success");
@@ -113,18 +113,18 @@ public class MainActivity extends AppCompatActivity {
                     if (code == 200) {
                         InputStream input = connection.getInputStream();
                         String response = StreamChangeStrUtils.toChange(input);
-                        Message message = new Message();
+                        Message message = Message.obtain();
                         message.what = RESPONSE_LOGIN_SUCCESS;
                         message.obj = response;
                         handler.sendMessage(message);
                     } else {
-                        Message message = new Message();
+                        Message message = Message.obtain();;
                         message.what = RESPONSE_LOGIN_FAIL;
                         message.obj = "登录失败，请稍后重试。";
                         handler.sendMessage(message);
                     }
                 } catch (Exception e) {
-                    Message message = new Message();
+                    Message message = Message.obtain();;
                     message.what = RESPONSE_LOGIN_EXCEPTION;
                     message.obj = "登录发生异常，请稍后重试。";
                     handler.sendMessage(message);
