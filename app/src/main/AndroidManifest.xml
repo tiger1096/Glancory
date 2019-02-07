@@ -54,7 +54,8 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".Main2Activity"></activity>
+        <activity android:name=".Main2Activity" />
+        <activity android:name=".page.TestActivity"></activity>
     </application>
 
 </manifest>

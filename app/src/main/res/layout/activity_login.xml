@@ -28,4 +28,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/logup" />
+
+    <Button
+        android:id="@+id/jump_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/jump_test" />
+
 </LinearLayout>

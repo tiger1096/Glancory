@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.glancory.glancory.Utils.HttpConnectionUtils;
 import com.glancory.glancory.Utils.StreamChangeStrUtils;
+import com.glancory.glancory.page.TestActivity;
 import com.glancory.glancory.receiver.BootReceiver;
 
 import java.io.InputStream;
@@ -47,6 +48,16 @@ public class MainActivity extends AppCompatActivity {
         sendBroadcast(new Intent("RestartSerivcesForSystemEventReceiver"));
 
         initLoginLayout();
+
+        Button testBtn = findViewById(R.id.jump_test);
+        testBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(MainActivity.this, TestActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     public void initLoginLayout() {

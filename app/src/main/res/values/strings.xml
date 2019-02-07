@@ -4,4 +4,13 @@
     <string name="logup">注册</string>
     <string name="confirm">确认</string>
     <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="sign_in">登录</string>
+    <string name="sign_up_button">注册</string>
+    <string name="sign_in_facebook">Facebook登录</string>
+    <string name="sign_in_google">Google登录</string>
+    <string name="logout_text">退出</string>
+
+
+    <string name="jump_test">退出</string>
 </resources>
