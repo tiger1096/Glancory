@@ -55,7 +55,10 @@
         </receiver>
 
         <activity android:name=".Main2Activity" />
-        <activity android:name=".page.TestActivity"></activity>
+        <activity
+            android:name=".page.TestActivity"
+            android:windowSoftInputMode="stateVisible|adjustResize">
+        </activity>
     </application>
 
 </manifest>
